@@ -31,7 +31,7 @@ function deepClone(obj) {
   var objCloned = {};
 
   for (var key in obj) {
-    if (obj[key] !== Object || !obj[key].isArray) {
+    if (obj[key] != Object || !obj[key].isArray) {
       objCloned[key] = obj[key];
     } else objCloned[key] = cloneObj(obj[key]);
   };
