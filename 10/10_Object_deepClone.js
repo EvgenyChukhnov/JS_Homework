@@ -13,28 +13,37 @@ var initialObj = {
       object3: {}
   },
   method: function() {
-      alert('Hello');
+    console.log('Hello');
   }
 };
 
-console.log('initialObj:');
-console.log(initialObj);
 var clonedObj = deepClone(initialObj);
 
 clonedObj.object.object2.array2[1].name = 'Vasya';
 clonedObj.array.push(2);
+clonedObj.string = 'Seryoja';
 
+console.log('initialObj:');
 console.log(initialObj);
+console.log('clonedObj:');
 console.log(clonedObj);
 
+
 function deepClone(obj) {
-  var objCloned = {};
+  var objCloned = new Object;
 
   for (var key in obj) {
-    if (obj[key] != Object || !obj[key].isArray) {
-      objCloned[key] = obj[key];
-    } else objCloned[key] = cloneObj(obj[key]);
-  };
+    if (obj[key] === null) {
+        objCloned[key] = obj[key];
+    } else if (Array.isArray(obj[key])) {
+      // var arr = [];
+      objCloned[key] = deepClone(obj[key]);
 
-  return objCloned;
+    } else if (typeof obj[key] === 'object') { 
+        objCloned[key] = deepClone(obj[key]);
+    } else {
+      objCloned[key] = obj[key];
+    }
+  };
+    return objCloned;
 };
