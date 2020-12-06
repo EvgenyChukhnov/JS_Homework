@@ -6,9 +6,23 @@ function objFromArr(arr) {
   var objArr = [],
       obj = {};
 
-  arr.forEach(function(item) {
+  arr.map(function(item) {
     objArr.push(obj = {name: item});
   });
 
   return objArr;
 };
+
+var timeArr = ['00', '13', '24'];
+
+console.log(timeTransform(timeArr));
+
+function timeTransform(arr) {
+
+  var result = arr.reduce(function(prev, current) {
+    return prev.toString() + ' : ' + current.toString();
+  });
+
+  return 'Текущее время : ' + result;
+};
+
