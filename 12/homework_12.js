@@ -5,14 +5,10 @@ var arrNames = ['Vasya', 'Petya', 'Seryoja', 'Nasten\'ka', 'Natasha', 'Voldemar'
 console.log(objFromArr(arrNames));
 
 function objFromArr(arr) {
-  var objArr = [],
-      obj = {};
 
-  arr.map(function(item) {
-    objArr.push(obj = {name: item});
+  return arr.map(function(item) {
+    return { name: item };
   });
-
-  return objArr;
 };
 
     // task 2:
@@ -23,11 +19,9 @@ console.log(timeTransform(timeArr));
 
 function timeTransform(arr) {
 
-  var result = arr.reduce(function(prev, current) {
-    return prev.toString() + ' : ' + current.toString();
-  });
-
-  return 'Текущее время : ' + result;
+  return arr.reduce(function(prev, current) {
+    return prev + ' : ' + current;
+  }, 'Текущее время : ');
 };
 
     // task 3:
@@ -38,16 +32,11 @@ console.log(vowelCount(text));
 
 function vowelCount(str) {
   var result = 0,
+      vowels = ['а', 'о', 'у', 'и', 'е', 'э'],
       arr = str.toLowerCase().split('');
-
-      arr.forEach(function(item) {
-        if (item === 'а' ||
-            item === 'о' ||
-            item === 'у' ||
-            item === 'и' ||
-            item === 'е' ||
-            item === 'э') result++;
-      });
+  arr.some(function(item) {
+    if (vowels.includes(item)) result++;
+  });
 
   return result;
 };
