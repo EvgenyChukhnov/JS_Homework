@@ -26,3 +26,22 @@ function timeTransform(arr) {
   return 'Текущее время : ' + result;
 };
 
+var text = 'Волонтеры "Фауны города" до сих пор помнят тот день, когда привезли на передержку большого кота. Предыстория точно неизвестна, но кто-то явно обожал кормить своего питомца.'
+
+console.log(vowelCount(text));
+
+function vowelCount(str) {
+  var result = 0,
+      arr = str.toLowerCase().split('');
+
+      arr.forEach(function(item) {
+        if (item === 'а' ||
+            item === 'о' ||
+            item === 'у' ||
+            item === 'и' ||
+            item === 'е' ||
+            item === 'э') result++;
+      });
+
+  return result;
+};
