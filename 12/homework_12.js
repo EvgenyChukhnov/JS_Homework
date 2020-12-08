@@ -106,3 +106,37 @@ return wordCountComparison(wordCheckArr, strResult);
     return console.log( 'Максимальное число повторений у слова ' + '"' + counterArr[0] + '"' + ': ' + counterArr.length);
   };
 };
+
+wordCounter2(text);
+
+function wordCounter2(str) {
+  var wordCheckArr = [],
+    strResult = str.toLowerCase().split(/[,' '."]/).filter(function(item) {
+      return item.length > 1;
+  });
+    wordCheckArr = strResult.filter(function(item, i){
+      return strResult.indexOf(item) === i;
+  });
+
+return wordCountComparison(wordCheckArr, strResult);
+  
+  function wordCountComparison(arr1, arr2) {
+    var counterArr = [],
+        subCountArr = [];
+
+    arr1.map(function(item) {
+      arr2.forEach(function(arr2Item) {
+        if ( item === arr2Item ) return subCountArr.push(item);
+      });  
+        if (subCountArr.length > counterArr.length) {
+          counterArr.length = 0;
+          for (var i = 0; i < subCountArr.length; i++) {
+            counterArr.push(item);
+          };
+        };
+      subCountArr.length = 0;
+      return counterArr
+    });
+      return console.log( 'Максимальное число повторений у слова ' + '"' + counterArr[0] + '"' + ': ' + counterArr.length + ' - second version');
+    };
+};
