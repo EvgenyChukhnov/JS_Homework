@@ -64,3 +64,45 @@ function countSentencesLetters(text) {
 
   return console.log(result);
 };
+
+    // task 5:
+
+var text = 'Волонтеры хозяин кот "Фауны города" хозяин до сих кот пор помнят хозяин тот день, когда  кот хозяин кот привезли на передержку хозяин большого кот а. Предыстория кот точно неизвестна кот хозяин кот, но кто-то явно обожал кормить своего питомца кот а.';
+
+wordCounter(text);
+
+function wordCounter(str) {
+  var wordCheckArr = [],
+    strResult = str.toLowerCase().split(/[,' '."]/).filter(function(item) {
+      return item.length > 1;
+  });
+    wordCheckArr = strResult.filter(function(item, i){
+      return strResult.indexOf(item) === i;
+  });
+
+return wordCountComparison(wordCheckArr, strResult);
+  
+  function wordCountComparison(arr1, arr2) {
+    var counterArr = [],
+        subCountArr = [];
+        
+    for (var i = 0; i < arr1.length; i++) {
+      subCountArr.length = 0;
+      for (var j = 0; j < arr2.length; j++) {
+        if (arr1[i] === arr2[j]) {
+          subCountArr.push(arr1[i]);
+        };
+      };
+
+      if (subCountArr.length > counterArr.length) {
+        counterArr.length = 0;
+
+        for (var k = 0; k < subCountArr.length; k++) {
+          counterArr.push(arr1[i]);
+        };
+      };
+    };
+
+    return console.log( 'Максимальное число повторений у слова ' + '"' + counterArr[0] + '"' + ': ' + counterArr.length);
+  };
+};
