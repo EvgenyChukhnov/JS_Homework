@@ -31,14 +31,14 @@ var text = 'Волонтеры "Фауны города" до сих пор по
 console.log(vowelCount(text));
 
 function vowelCount(str) {
-  var result = 0,
+  var vowelsFilterArr = [],
       vowels = ['а', 'о', 'у', 'и', 'е', 'э'],
       arr = str.toLowerCase().split('');
-  arr.some(function(item) {
-    if (vowels.includes(item)) result++;
+      vowelsFilterArr = arr.filter(function(item) {
+     return vowels.indexOf(item) !== -1;
   });
 
-  return result;
+  return vowelsFilterArr.length;
 };
 
     // task 4:
