@@ -1,0 +1,16 @@
+table {
+  border: 2px solid darkgreen;
+  width: 500px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+table td {
+  height: 40px;
+  border: 1px solid green;
+}
+
+.red {
+  color: rgb(253, 7, 7);
+  background-color: yellow;
+}
