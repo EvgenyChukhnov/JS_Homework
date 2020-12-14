@@ -4,7 +4,7 @@ table {
   width: 630px;
 }
 
-table td {
+td {
   height: 40px;
   border: 1px solid green;
   width: 196px;
@@ -13,8 +13,9 @@ table td {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
+  padding: 0 4px;
   vertical-align: middle;
-  padding: 0 5px;
+  padding: 0 4px;
 }
 
 .addRow {
@@ -22,7 +23,8 @@ table td {
 }
 
 input{
-  width: 190px;
+  width: 184px;
   font-family: 'Times New Roman', Times, serif;
   font-size: 16px;
+  margin: 0;
 }
