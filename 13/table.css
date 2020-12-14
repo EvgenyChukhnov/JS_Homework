@@ -1,12 +1,13 @@
 table {
   border: 2px solid darkgreen;
   border-collapse: collapse;
+  width: 630px;
 }
 
 table td {
   height: 40px;
   border: 1px solid green;
-  width: 200px;
+  width: 196px;
   text-overflow: ellipsis;
   text-align: left;
   vertical-align: middle;
@@ -19,7 +20,7 @@ table td {
 
 input{
   text-overflow: ellipsis;
-  width: 192px;
+  width: 190px;
   font-family: 'Times New Roman', Times, serif;
   font-size: 16px;
 }
