@@ -12,7 +12,7 @@ function tableClick(event) {
     table.firstElementChild.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td></tr>');
     return;
   };
-  
+
   if (target.tagName === 'TD') {
 
     if (target.textContent) {
@@ -22,11 +22,14 @@ function tableClick(event) {
 
     if (target.firstElementChild) {
       target.firstElementChild.focus();
-    } else { 
-      target.appendChild(myInput).focus(); 
+    } else {
+      target.appendChild(myInput).focus();
       target.firstElementChild.value = text;
-    };                      
-    text = '';                             
+    };
+    text = '';
+    target.firstElementChild.addEventListener('keyup', function(e){
+      if(e.code === 'Enter') { this.blur() };
+    });
   };
 };
 
