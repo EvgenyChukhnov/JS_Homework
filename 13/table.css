@@ -17,6 +17,9 @@ table td {
   text-align: center;
 }
 
-.input{
+input{
   text-overflow: ellipsis;
+  width: 192px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
 }
