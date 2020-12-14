@@ -14,6 +14,7 @@ var button = document.getElementsByTagName('button')[0],
 
     secondPar.onclick = function (event) {
       event.preventDefault();
+      console.dir(event.target);
       if (event.target.tagName == 'P' ) {
         alert('you clicked on the second paragraph!')
       } else { alert(event.target) };
