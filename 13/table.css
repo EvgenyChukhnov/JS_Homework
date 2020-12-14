@@ -1,16 +1,22 @@
 table {
   border: 2px solid darkgreen;
-  width: 500px;
-  text-align: center;
   border-collapse: collapse;
 }
 
 table td {
   height: 40px;
   border: 1px solid green;
+  width: 200px;
+  text-overflow: ellipsis;
+  text-align: left;
+  vertical-align: middle;
+  padding: 0 5px;
 }
 
-.red {
-  color: rgb(253, 7, 7);
-  background-color: yellow;
+.addRow {
+  text-align: center;
+}
+
+.input{
+  text-overflow: ellipsis;
 }
