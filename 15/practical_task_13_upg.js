@@ -44,7 +44,7 @@ function addClick () {
     linksFirstPar[i].classList.add(colorArr[counter]);
   };
   counter++;
-  if(counter > 4) {counter = 0;};
+  if(counter == 5) {counter = 0;};
 };
 
 function localStorageClear() {
