@@ -26,11 +26,10 @@ function toggleBlackWhite(e) {
 };
 
 function inputEnable(e){
-  if(!inputX.value || !inputY.value || inputX.value === null) {
-    button.setAttribute('disabled', 'disabled');
-  } else if (!inputX.value) {
+
+    if (!inputX.value || inputX.value.indexOf(' ') !== -1) {
       button.setAttribute('disabled', 'disabled');
-    } else if (!inputY.value) {
+    } else if (!inputY.value || inputY.value.indexOf(' ') !== -1) {
         button.setAttribute('disabled', 'disabled');
       } else {
         button.removeAttribute('disabled');
@@ -42,16 +41,32 @@ function valueCheck() {
   var insertString = '';
 
   recipientDiv.innerHTML = '';
-      if (isNaN(parseInt(inputX.value)) || isNaN(inputX.value) || inputX.value < 1 || inputX.value > 10) {
-        alert('insert number in field "X"');
-        inputX.value = '';
-        button.setAttribute('disabled', 'disabled');
-      } else if (isNaN(parseInt(inputY.value)) || isNaN(inputY.value) || inputY.value < 1 || inputY.value > 10) {
-          alert('insert number in field "Y"');
-          inputY.value = '';
-          button.setAttribute('disabled', 'disabled');
-        } else {
 
+      if (isNaN(inputX.value)
+      || inputX.value < 1
+      || inputX.value > 10
+      || inputX.value !== (+inputX.value).toFixed()) {
+        if (isNaN(inputX.value)) {
+          alert('the value "X" must be number')
+        } else {
+          alert('number in field "X" must be integer in range from 1 till 10 inclusive');
+        };
+        button.setAttribute('disabled', 'disabled');
+        inputX.value = '';
+        inputX.focus();
+      } else if (isNaN(inputY.value)
+      || inputY.value < 1
+      || inputY.value > 10
+      || inputY.value !== (+inputY.value).toFixed()) {
+        if (isNaN(inputY.value)) {
+          alert('the value "Y" must be number')
+        } else {
+          alert('number in field "Y" must be integer in range from 1 till 10 inclusive');
+        };
+          button.setAttribute('disabled', 'disabled');
+          inputY.value = '';
+          inputY.focus();
+        } else {
             for (var i = 0; i < inputX.value * inputY.value; i++) {
               var temp = '';
 
@@ -77,5 +92,8 @@ function valueCheck() {
             recipientDiv.style.width = width;
             recipientDiv.classList.remove('hide');
             insertString = '';
+            inputX.value = '';
+            inputY.value = '';
+            button.setAttribute('disabled', 'disabled');
           };
 };
