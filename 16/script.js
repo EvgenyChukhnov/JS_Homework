@@ -38,7 +38,7 @@ function addUserFunc() {
   } else {
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'https://reqres.in/api/users?page=2', true); //users?
+    xhr.open('GET', 'https://reqres.in/api/users?page=2', true);
     xhr.send();
     xhr.onload = function () {
       var statusType = +String(this.status)[0];
@@ -77,13 +77,16 @@ function addUserFunc() {
       infoBlock.innerHTML = result;
       infoBlock.style.display = "flex";
       userTabs.firstElementChild.classList.add('white-tab');
-
     };
 
     xhr.onerror = function () {
       var statusType = +String(this.status)[0];
         try {
-          if (statusType === 4) { 
+          if (statusType === 0) { 
+            throw { 
+            name: 'url', message: 'error - wrong URL' 
+            };
+          } else if (statusType === 4) { 
             throw { 
             name: 'client', message: 'something happened - client-side error' 
             };
@@ -92,13 +95,30 @@ function addUserFunc() {
               name: 'server', message: 'something happened - server-side error'
             };
           };
-        } catch {
-          if (e.name === 'client') {
+        } catch (e) {
+          if (e.name === 'url') {
+            infoBlock.innerHTML = '<div class="error">' + e.message + '</div>';
+          } if (e.name === 'client') {
             infoBlock.innerHTML = '<div class="error">' + e.message + '</div>';
           } else if (e.name === 'server') {
             infoBlock.innerHTML = '<div class="error">' + e.message + '</div>';
           };
+            infoBlock.style.display = "flex";
         }
+    };
+
+    xhr.onloadend = function() {
+      var statusType = +String(this.status)[0];
+      try {
+        if(statusType === 2 && !JSON.parse(localStorage.getItem(key)).data[0].avatar || statusType === 4) {
+          throw {
+            name: 'server', message: 'error: page not found'
+          };
+        };
+      } catch (e) {
+        infoBlock.innerHTML = '<div class="error">' + e.message + '</div>';
+        infoBlock.style.display = "flex";
+      };
     };
   };
 };
@@ -121,7 +141,7 @@ function updateUserBlock (event) {
 
     } catch {
       result = '';
-      result = '<div class="error"><span>EVIL</span><span>someone emptied the Local Storage</span><span>please reload Users List</span></div>';
+      result = '<div class="error"><span>failed to load DATA from Local Storage</span><span>please contact administrator</span></div>';
       infoBlock.innerHTML = '';
       infoBlock.innerHTML = result;
     };
@@ -132,4 +152,8 @@ function updateUserBlock (event) {
       };
       target.classList.add('white-tab');
   };
+};
+
+window.onload = function() {
+  addUserFunc();
 };
