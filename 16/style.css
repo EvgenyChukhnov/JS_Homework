@@ -7,7 +7,6 @@ body {
 
 .page-content {
   font-family: Arial, Helvetica, sans-serif;
-  /* text-align: right; */
   max-width: 800px;
   margin: 0 auto;
 }
@@ -45,7 +44,7 @@ body {
 }
 
 .info-block {
-  display: none;
+  display: flex;
   background-color: white;
   max-width: 700px;
   height: 190px;
