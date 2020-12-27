@@ -36,7 +36,7 @@ function addUserFunc() {
     xhr.onerror = function () {
       var statusType = +String(this.status)[0];
         try {
-          if (statusType === 0) { 
+          if (statusType === 0) {
             throw { 
             name: 'url', message: 'error - wrong URL' 
             };

@@ -1,7 +1,7 @@
 var recipientDiv = document.createElement('div'),
     element = document.createElement('div'),
-    inputX = document.getElementById('xId'),
-    inputY = document.getElementById('yId'),
+    inputX = document.getElementById('X'),
+    inputY = document.getElementById('Y'),
     button = document.getElementsByTagName('BUTTON')[0],
     baseString = '<div class="element"></div>',
     baseStringClass = '<div class="element toggleColor"></div>',
@@ -19,7 +19,7 @@ recipientDiv.addEventListener('click', toggleBlackWhite);
 
 var blackDivsCollection = recipientDiv.getElementsByClassName('element');
 
-function toggleBlackWhite(e) {
+function toggleBlackWhite() {
   for (var i = 0; i < blackDivsCollection.length; i++) {
     blackDivsCollection[i].classList.toggle('toggleColor');
   };
