@@ -15,10 +15,10 @@ userTabs.addEventListener('click', updateUserBlock);
 function addUserFunc() {
   if (localStorage.getItem('localStorageKey')) {
     key = localStorage.getItem('localStorageKey');
-  setTabs();
-  setBlock();
+    setTabs();
+    setBlock();
   } else {
-  var xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://reqres.in/api/users?page=1', true);
     xhr.send();
     xhr.onload = function () {
@@ -38,11 +38,11 @@ function addUserFunc() {
         try {
           if (statusType === 0) {
             throw { 
-            name: 'url', message: 'error - wrong URL' 
+              name: 'url', message: 'error - wrong URL' 
             };
           } else if (statusType === 4) { 
             throw { 
-            name: 'client', message: 'something happened - client-side error' 
+              name: 'client', message: 'something happened - client-side error' 
             };
           } else if (statusType === 5) {
             throw {
@@ -99,16 +99,13 @@ function setBlock() {
     lastName = 'last name: ' + JSON.parse(localStorage.getItem(key)).data[0].last_name;
     infoBlock.innerHTML = '';
     infoBlock.innerHTML = '<div class="avatar"><img src="'
-      + avatar + '"></div><div class="names-info"><div class="first-name-info">'
-      + firstName + '</div><div class="last-name-info">' 
-      + lastName + '</div></div></div>';
+    + avatar + '"></div><div class="names-info"><div class="first-name-info">'
+    + firstName + '</div><div class="last-name-info">' 
+    + lastName + '</div></div></div>';
     userTabs.firstElementChild.classList.add('white-tab');
+    infoBlock.classList.add('visible');
   } catch (e) { 
-      infoBlock.innerHTML = '<div class="error"><span>Unable to load data</span><span>please contact administrator</span></div>';
-      localStorage.clear();
+    infoBlock.innerHTML = '<div class="error"><span>Unable to load data</span><span>please contact administrator</span></div>';
+    localStorage.clear();
   };
-};
-
-window.onload = function() {
-  addUserFunc();
 };
